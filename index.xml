@@ -41,7 +41,7 @@ Azure Functions First face-off: Azure Durable Functions</description>
       <guid>https://sergiobarriel.github.io/posts/how-to-automatically-validate-a-model-with-mvc-filter-and-fluent-validation-package/</guid>
       <description>I have had the opportunity to see many MVC projects and in the vast majority of them I find structures where the view models are manually validated in all the methods of all the controllers.
 At best, the code relies on verifying ModelState property from Controller class, but in the worst case… better not to comment it.
-1 2 3 4 5 6 7 8 9 10  [Route(&amp;#34;&amp;#34;)] [HttpPost] public async Task&amp;lt;IActionResult&amp;gt; CreatePostAsync([FromBody] CreatePost request) { if (ModelState.</description>
+ So, it exists a more elegant solution for this… let&amp;rsquo;s see it</description>
     </item>
     
   </channel>

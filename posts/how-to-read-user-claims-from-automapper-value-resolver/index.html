@@ -34,7 +34,7 @@
 
 
 
-<link rel="stylesheet" href="https://sergiobarriel.github.io/css/style.min.674df07b2287c4572186503efce4d799dd815bead4ce4bcf12f261edf4471e4f.css"></head>
+<link rel="stylesheet" href="https://sergiobarriel.github.io/css/style.min.f4833838ae4bdd9761739b98384e83def2c33502040995b5b1dfdc2fa9e702c4.css"></head>
     <body>
         <div class="main-container">
             <div class="left"></div>
@@ -43,7 +43,7 @@
     
     <div class="left">
 
-      <div class="author-image"  >
+      <div class="author-image"   hidden >
         <a href='/' title="nohat.dev">
           <img src="/theme/logo.png" alt="nohat.dev">
         </a>        
@@ -97,7 +97,7 @@
             <i class="fa fa-clock-o" aria-hidden="true"></i>2 min read
         </li>
         <li class="words-count" style="">
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>384 words
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>259 words
         </li>
     </ul>
 
@@ -138,132 +138,30 @@
 <blockquote>
 <p>The model that exposes the API is CreateCompany and the DTO that we send to the service is CreateCompanyDto. Both models are the same, except the last one, which incorporates a property that stores the user’s identifier.</p>
 </blockquote>
-<h3 id="install-nuget-packages">Install Nuget packages</h3>
+<h3 id="step-1-install-nuget-packages">Step 1: Install Nuget packages</h3>
 <p>To make this solution to work correctly, we will need these two packages:</p>
 <ul>
 <li><a href="https://www.nuget.org/packages/AutoMapper">Automapper</a></li>
 <li><a href="https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/">Automapper.Extensions.Microsoft.DependencyInjection</a></li>
 </ul>
-<h3 id="register-ihttpcontextaccessor-interface-into-di-container">Register <em>IHttpContextAccessor</em> interface into DI container</h3>
+<h3 id="step-2-register-ihttpcontextaccessor-interface-into-di-container">Step 2: Register <em>IHttpContextAccessor</em> interface into DI container</h3>
 <p>Why? because <em>IHttpContextAccessor</em> is not registered by default for performance reasons. You can read on <a href="https://github.com/aspnet/HttpAbstractions/issues/473">Github</a> a thread with a discussion about it.</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#111">ConfigureServices</span><span style="color:#111">(</span><span style="color:#111">IServiceCollection</span> <span style="color:#111">services</span><span style="color:#111">)</span>
-<span style="color:#111">{</span>
-    <span style="color:#111">services</span><span style="color:#111">.</span><span style="color:#111">AddTransient</span><span style="color:#111">&lt;</span><span style="color:#111">IHttpContextAccessor</span><span style="color:#111">,</span> <span style="color:#111">HttpContextAccessor</span><span style="color:#111">&gt;();</span>
-    
-    <span style="color:#111">services</span><span style="color:#111">.</span><span style="color:#111">AddAutoMapper</span><span style="color:#111">(</span><span style="color:#111">configuration</span> <span style="color:#111">=&gt;</span>
-    <span style="color:#111">{</span>
-        <span style="color:#111">configuration</span><span style="color:#111">.</span><span style="color:#111">AddProfile</span><span style="color:#111">&lt;</span><span style="color:#111">CompanyProfile</span><span style="color:#111">&gt;();</span>
-    <span style="color:#111">});</span>
+<script type="application/javascript" src="https://gist.github.com/sergiobarriel/27fab0932459b3f6853a06a72d3086a5.js?file=Startup.cs"></script>
 
-    <span style="color:#111">services</span><span style="color:#111">.</span><span style="color:#111">AddMvc</span><span style="color:#111">();</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="create-automapper-profile">Create Automapper profile</h3>
+<h3 id="step-3-create-automapper-profile">Step 3: Create Automapper profile</h3>
 <p>On our <em>Automapper</em> profile, we will specify which <em>“custom value solver”</em> we will use to recover the desired value of the user’s claims</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">CompanyProfile</span> <span style="color:#111">:</span> <span style="color:#111">Profile</span>
-<span style="color:#111">{</span>
-    <span style="color:#00a8c8">public</span> <span style="color:#111">CompanyProfile</span><span style="color:#111">()</span>
-    <span style="color:#111">{</span>
-        <span style="color:#111">CreateMap</span><span style="color:#111">&lt;</span><span style="color:#111">CreateCompany</span><span style="color:#111">,</span> <span style="color:#111">CreateCompanyDto</span><span style="color:#111">&gt;()</span>
-            <span style="color:#111">.</span><span style="color:#111">ForMember</span><span style="color:#111">(</span><span style="color:#111">destination</span> <span style="color:#111">=&gt;</span> <span style="color:#111">destination</span><span style="color:#111">.</span><span style="color:#111">UserId</span><span style="color:#111">,</span> <span style="color:#111">option</span> <span style="color:#111">=&gt;</span> <span style="color:#111">option</span><span style="color:#111">.</span><span style="color:#111">ResolveUsing</span><span style="color:#111">&lt;</span><span style="color:#111">UserIdResolver</span><span style="color:#111">&gt;());</span>
-    <span style="color:#111">}</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="create-custom-value-resolver">Create <em>“Custom Value Resolver”</em></h3>
+<script type="application/javascript" src="https://gist.github.com/sergiobarriel/5f38817a1b453c6654b06ac5d5ad18cd.js?file=CompanyProfile.cs"></script>
+
+<h3 id="step-4-create-custom-value-resolver">Step 4: Create <em>“Custom Value Resolver”</em></h3>
 <p>We must inject <em>IHttpContextAccessor</em> interface on class constructor so that afterwards, the “Resolve” method is able to read the property.</p>
 <p>In this case, we read “NameIdentifier” claim as our user identifier, but we can read anything.</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">UserIdResolver</span> <span style="color:#111">:</span> <span style="color:#111">IValueResolver</span><span style="color:#111">&lt;</span><span style="color:#00a8c8">object</span><span style="color:#111">,</span> <span style="color:#00a8c8">object</span><span style="color:#111">,</span> <span style="color:#00a8c8">string</span><span style="color:#111">&gt;</span>
-<span style="color:#111">{</span>
-    <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">readonly</span> <span style="color:#111">IHttpContextAccessor</span> <span style="color:#111">_contextAccessor</span><span style="color:#111">;</span>
+<script type="application/javascript" src="https://gist.github.com/sergiobarriel/b8a7f3b5a6d2062792d5e8dc4bf0f459.js?file=UserIdResolver.cs"></script>
 
-    <span style="color:#00a8c8">public</span> <span style="color:#111">UserIdResolver</span><span style="color:#111">(</span><span style="color:#111">IHttpContextAccessor</span> <span style="color:#111">contextAccessor</span><span style="color:#111">)</span>
-    <span style="color:#111">{</span>
-        <span style="color:#111">_contextAccessor</span> <span style="color:#111">=</span> <span style="color:#111">contextAccessor</span><span style="color:#111">;</span>
-    <span style="color:#111">}</span>
-
-    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">string</span> <span style="color:#111">Resolve</span><span style="color:#111">(</span><span style="color:#00a8c8">object</span> <span style="color:#111">source</span><span style="color:#111">,</span> <span style="color:#00a8c8">object</span> <span style="color:#111">destination</span><span style="color:#111">,</span> <span style="color:#00a8c8">string</span> <span style="color:#111">destinationMember</span><span style="color:#111">,</span> <span style="color:#111">ResolutionContext</span> <span style="color:#111">context</span><span style="color:#111">)</span>
-    <span style="color:#111">{</span>            
-        <span style="color:#00a8c8">return</span> <span style="color:#111">_contextAccessor</span><span style="color:#111">.</span><span style="color:#111">HttpContext</span><span style="color:#111">.</span><span style="color:#111">User</span><span style="color:#111">.</span><span style="color:#111">Claims</span>
-            <span style="color:#111">.</span><span style="color:#111">Where</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Type</span> <span style="color:#111">==</span> <span style="color:#111">ClaimTypes</span><span style="color:#111">.</span><span style="color:#111">NameIdentifier</span><span style="color:#111">)</span>
-            <span style="color:#111">.</span><span style="color:#111">Select</span><span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#111">=&gt;</span> <span style="color:#111">c</span><span style="color:#111">.</span><span style="color:#111">Value</span><span style="color:#111">).</span><span style="color:#111">SingleOrDefault</span><span style="color:#111">();</span>
-    <span style="color:#111">}</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="create-controller-and-mapping-data">Create controller and mapping data</h3>
+<h3 id="step-5-create-controller-and-mapping-data">Step 5: Create controller and mapping data</h3>
 <p>Now, we will be able to map both classes in a single line and this is because Automapper will be in charge of recovering the value that we need from the claims.</p>
-<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#75af00">[HttpPost]</span>
-<span style="color:#75af00">[Authorize]</span>
-<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">async</span> <span style="color:#111">Task</span><span style="color:#111">&lt;</span><span style="color:#111">IActionResult</span><span style="color:#111">&gt;</span> <span style="color:#111">CreateCompanyAsync</span><span style="color:#111">(</span><span style="color:#111">CreateCompany</span> <span style="color:#111">request</span><span style="color:#111">)</span>
-<span style="color:#111">{</span>
-    <span style="color:#00a8c8">var</span> <span style="color:#111">mapped</span> <span style="color:#111">=</span> <span style="color:#111">_automapper</span><span style="color:#111">.</span><span style="color:#111">Map</span><span style="color:#111">&lt;</span><span style="color:#111">CreateCompanyDto</span><span style="color:#111">&gt;(</span><span style="color:#111">request</span><span style="color:#111">);</span>
-    
-    <span style="color:#00a8c8">return</span> <span style="color:#111">Ok</span><span style="color:#111">(</span><span style="color:#00a8c8">await</span> <span style="color:#111">_companyService</span><span style="color:#111">.</span><span style="color:#111">CreateCompanyAsync</span><span style="color:#111">(</span><span style="color:#111">mapped</span><span style="color:#111">));</span>
-<span style="color:#111">}</span>
-</code></pre></td></tr></table>
-</div>
-</div>
+<script type="application/javascript" src="https://gist.github.com/sergiobarriel/cf2ea185352c2691cacaae25d32ec829.js?file=CompanyController.cs"></script>
+
+
         </div>
 
     </article>
@@ -272,7 +170,11 @@
 
 
                 <footer class="footer">    
-    <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></p>
+    <p>
+        Blog powered by <a href="https://gohugo.io/" target="_blank">Hugo</a>.
+    
+        Icon designed by <a href="https://www.phegraphic.com/" target="_blank">phegraphic</a>.
+    </p>
 </footer>
             </div>
             <div class="right"></div>
