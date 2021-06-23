@@ -1,0 +1,9 @@
+a {
+    color: $tertiary-color;
+    text-decoration: none;
+
+    &:hover {
+        color: $tertiary-color;
+        text-decoration: underline;
+    }
+}

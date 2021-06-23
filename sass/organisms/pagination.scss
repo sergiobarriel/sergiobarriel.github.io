@@ -1,0 +1,16 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: $default-padding;
+    padding-bottom: 0px;
+    
+    p { margin: 0px; }
+
+    i { font-size: 14px; }
+
+    .older { i { padding-right: 10px; } }
+
+    .newer { i { padding-left: 10px; } }
+}

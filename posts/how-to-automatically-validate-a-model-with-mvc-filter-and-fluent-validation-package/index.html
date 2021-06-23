@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+    <head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+
+<meta name="generator" content="Hugo 0.74.3" />
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700&display=swap" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link href="https://fonts.googleapis.com/css2?family=Bitter&display=swap" rel="stylesheet">
+
+
+<link rel="icon" href="./theme/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" sizes="57x57" href="./theme/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="./theme/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="./theme/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="./theme/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="./theme/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="./theme/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="./theme/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="./theme/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./theme/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="./theme/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./theme/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="./theme/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./theme/favicon-16x16.png">
+<link rel="manifest" href="./theme/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="./theme/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+<link rel="stylesheet" href="https://sergiobarriel.github.io/css/style.min.674df07b2287c4572186503efce4d799dd815bead4ce4bcf12f261edf4471e4f.css"></head>
+    <body>
+        <div class="main-container">
+            <div class="left"></div>
+            <div class="center">
+                <nav class="navigation">
+    
+    <div class="left">
+
+      <div class="author-image"  >
+        <a href='/' title="nohat.dev">
+          <img src="/theme/logo.png" alt="nohat.dev">
+        </a>        
+      </div>
+
+      <div class="author-info" >
+
+        <div class="title">
+          <a href='/' title="nohat.dev">
+            <h1>nohat.dev</h1>
+          </a>
+        </div>
+
+        <div class="description">
+          <a href='/' title="another blog">
+            <p>another blog</p>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="right">
+      
+      
+      
+      
+      <ul>
+        <li class="social"><a href='https://github.com/sergiobarriel' title="Github" target="_blank">Github</a></li><li class="social"><a href='https://twitter.com/sergiobarriel' title="Twitter" target="_blank">Twitter</a></li>
+      </ul>
+      
+
+    </div>
+
+</nav>
+
+                
+
+<div class="single">
+
+    <article>
+
+        <div class="meta">
+        
+    <ul class="info">
+        <li class="time" style="">
+            <time class="time">08 May 2020</time>
+        </li>
+        <li class="reading-time" style="">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>3 min read
+        </li>
+        <li class="words-count" style="">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>624 words
+        </li>
+    </ul>
+
+    <ul class="tags" style="">
+        
+            
+                <li>
+                    <a href='/tags/mvc'>#mvc</a>
+                </li>
+            
+                <li>
+                    <a href='/tags/netcore'>#netcore</a>
+                </li>
+            
+                <li>
+                    <a href='/tags/validation'>#validation</a>
+                </li>
+            
+                
+    </ul>
+
+</div>
+                      
+        <h2>How to automatically validate a model with MVC filter and Fluent Validation package</h2>  
+             
+        <h3 class="excerpt"></h3>  
+
+        <div class="content">
+            <p>I have had the opportunity to see many MVC projects and in the vast majority of them I find structures where the view models are manually validated in all the methods of all the controllers.</p>
+<p>At best, the code relies on verifying ModelState property from Controller class, but in the worst case… better not to comment it.</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#75af00">[Route(&#34;&#34;)]</span>
+<span style="color:#75af00">[HttpPost]</span>
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">async</span> <span style="color:#111">Task</span><span style="color:#111">&lt;</span><span style="color:#111">IActionResult</span><span style="color:#111">&gt;</span> <span style="color:#111">CreatePostAsync</span><span style="color:#111">([</span><span style="color:#111">FromBody</span><span style="color:#111">]</span> <span style="color:#111">CreatePost</span> <span style="color:#111">request</span><span style="color:#111">)</span>
+<span style="color:#111">{</span>
+    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">ModelState</span><span style="color:#111">.</span><span style="color:#111">IsValid</span><span style="color:#111">)</span>
+    <span style="color:#111">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">Ok</span><span style="color:#111">(</span><span style="color:#00a8c8">await</span> <span style="color:#111">_postService</span><span style="color:#111">.</span><span style="color:#111">CreateAsync</span><span style="color:#111">(</span><span style="color:#111">request</span><span style="color:#111">));</span>
+    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">BadRequest</span><span style="color:#111">(</span><span style="color:#111">ModelState</span><span style="color:#111">.</span><span style="color:#111">ValidationState</span><span style="color:#111">);</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>So, it exists a more elegant solution for this… let&rsquo;s see it</p>
+<blockquote>
+<p>In our example, we will validate a view model called CreatePost before the request reaches the controller PostController, and after that, we will send the request to properly service</p>
+</blockquote>
+<h3 id="install-nuget-packages">Install nuget packages</h3>
+<p>Download <a href="https://www.nuget.org/packages/FluentValidation.AspNetCore/">FluentValidation.AspNetCore</a> by <a href="https://github.com/JeremySkinner">Jeremy Skinner</a></p>
+<h3 id="create-validator">Create validator</h3>
+<p>With FluentValidation package, all our validators are classes that inherits from AbstractValidator<!-- raw HTML omitted -->, where <!-- raw HTML omitted --> is our view model.</p>
+<p>In this step, we&rsquo;re making sure that the &ldquo;Title&rdquo; and &ldquo;Content&rdquo; properties from &ldquo;CreatePost&rdquo; view model are never empty, like [Required] data annotation.</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">CreatePostValidator</span> <span style="color:#111">:</span> <span style="color:#111">AbstractValidator</span><span style="color:#111">&lt;</span><span style="color:#111">CreatePost</span><span style="color:#111">&gt;</span>
+<span style="color:#111">{</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">CreatePostValidator</span><span style="color:#111">()</span>
+    <span style="color:#111">{</span>
+        <span style="color:#111">RuleFor</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Title</span><span style="color:#111">).</span><span style="color:#111">NotEmpty</span><span style="color:#111">();</span>
+        <span style="color:#111">RuleFor</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Content</span><span style="color:#111">).</span><span style="color:#111">NotEmpty</span><span style="color:#111">();</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>As you can see, in class constructor, you can add rules for each property and combine as you need.</p>
+<p><em>This is a more complete example with conditional rules for a more flexible scenario, where we can allow authentication with a username or email, but always one of the two.</em></p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">LoginValidator</span> <span style="color:#111">:</span> <span style="color:#111">AbstractValidator</span><span style="color:#111">&lt;</span><span style="color:#111">Login</span><span style="color:#111">&gt;</span>
+<span style="color:#111">{</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">LoginValidator</span><span style="color:#111">()</span>
+    <span style="color:#111">{</span>
+        <span style="color:#111">RuleFor</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">UserName</span><span style="color:#111">)</span>
+            <span style="color:#111">.</span><span style="color:#111">NotEmpty</span><span style="color:#111">()</span>
+            <span style="color:#111">.</span><span style="color:#111">When</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">!</span><span style="color:#111">DataTypesHelper</span><span style="color:#111">.</span><span style="color:#111">IsEmail</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Email</span><span style="color:#111">)</span> <span style="color:#111">&amp;&amp;</span> <span style="color:#00a8c8">string</span><span style="color:#111">.</span><span style="color:#111">IsNullOrEmpty</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Email</span><span style="color:#111">))</span>
+            <span style="color:#111">.</span><span style="color:#111">WithMessage</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Username or email are required&#34;</span><span style="color:#111">);</span>
+
+        <span style="color:#111">RuleFor</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Email</span><span style="color:#111">)</span>
+            <span style="color:#111">.</span><span style="color:#111">NotEmpty</span><span style="color:#111">()</span>
+            <span style="color:#111">.</span><span style="color:#111">When</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#00a8c8">string</span><span style="color:#111">.</span><span style="color:#111">IsNullOrEmpty</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">UserName</span><span style="color:#111">))</span>
+            <span style="color:#111">.</span><span style="color:#111">WithMessage</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Username or email are required&#34;</span><span style="color:#111">);</span>
+
+        <span style="color:#111">RuleFor</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#111">=&gt;</span> <span style="color:#111">x</span><span style="color:#111">.</span><span style="color:#111">Password</span><span style="color:#111">)</span>
+            <span style="color:#111">.</span><span style="color:#111">NotEmpty</span><span style="color:#111">()</span>
+            <span style="color:#111">.</span><span style="color:#111">WithMessage</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Password is required&#34;</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>If you need, you can read the complete documentation about FluentValidation from <a href="https://github.com/JeremySkinner/FluentValidation/wiki/b.-Creating-a-Validator">Github repository</a></p>
+<h3 id="create-mvc-filter">Create MVC filter</h3>
+<p>As shown on this post about <a href="https://exceptionnotfound.net/the-asp-net-web-api-2-http-message-lifecycle-in-43-easy-steps-2/">MVC lifecycle</a> by <a href="https://twitter.com/ExceptionFound">Matthew Jones</a>, <em>Action Filters</em> are invoked before and after controller, but we are interested in validating our model only before invoking the controller, so for this reason we will use <em>OnActionExecuting</em> method.</p>
+<p><img src="/images/aspnet-web-api-poster.png" alt="https://www.asp.net/media/4071077/aspnet-web-api-poster.pdf"></p>
+<p>At this point, we will check <em>ModelState</em>, which internally will apply the rules that we have defined with FluentValidation</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">ModelStateFilter</span> <span style="color:#111">:</span> <span style="color:#111">IActionFilter</span>
+<span style="color:#111">{</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#111">OnActionExecuting</span><span style="color:#111">(</span><span style="color:#111">ActionExecutingContext</span> <span style="color:#111">context</span><span style="color:#111">)</span>
+    <span style="color:#111">{</span>
+        <span style="color:#00a8c8">if</span> <span style="color:#111">(!</span><span style="color:#111">context</span><span style="color:#111">.</span><span style="color:#111">ModelState</span><span style="color:#111">.</span><span style="color:#111">IsValid</span><span style="color:#111">)</span>
+        <span style="color:#111">{</span>
+            <span style="color:#111">context</span><span style="color:#111">.</span><span style="color:#111">Result</span> <span style="color:#111">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">BadRequestObjectResult</span><span style="color:#111">(</span><span style="color:#111">context</span><span style="color:#111">.</span><span style="color:#111">ModelState</span><span style="color:#111">);</span>
+        <span style="color:#111">}</span>
+    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#111">OnActionExecuted</span><span style="color:#111">(</span><span style="color:#111">ActionExecutedContext</span> <span style="color:#111">context</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Code example is based on this <a href="https://gist.github.com/Ciantic/88a2e9bae6961c23c2f366e89526b853">Gist</a></p>
+<h3 id="register-services-into-di-container">Register services into DI container</h3>
+<p>When adding the MVC service to the DI container, we must specify the action filters that we want to use, and then, specify in which assembly are the validators of our view models.</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#111">ConfigureServices</span><span style="color:#111">(</span><span style="color:#111">IServiceCollection</span> <span style="color:#111">services</span><span style="color:#111">)</span>
+<span style="color:#111">{</span>
+    <span style="color:#111">services</span><span style="color:#111">.</span><span style="color:#111">AddMvc</span><span style="color:#111">(</span><span style="color:#111">options</span> <span style="color:#111">=&gt;</span>
+        <span style="color:#111">{</span>
+            <span style="color:#111">options</span><span style="color:#111">.</span><span style="color:#111">Filters</span><span style="color:#111">.</span><span style="color:#111">Add</span><span style="color:#111">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">ModelStateFilter</span><span style="color:#111">());</span>
+        <span style="color:#111">})</span>
+        <span style="color:#111">.</span><span style="color:#111">AddFluentValidation</span><span style="color:#111">(</span><span style="color:#111">options</span> <span style="color:#111">=&gt;</span>
+        <span style="color:#111">{</span>
+            <span style="color:#111">options</span><span style="color:#111">.</span><span style="color:#111">RegisterValidatorsFromAssemblyContaining</span><span style="color:#111">&lt;</span><span style="color:#111">Startup</span><span style="color:#111">&gt;();</span>
+        <span style="color:#111">});</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="create-controller-method">Create controller method</h3>
+<p>The last step is to create a method in our controller, which meets the requirement of being lightweight.</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-csharp" data-lang="csharp"><span style="color:#75af00">[Route(&#34;&#34;)]</span>
+<span style="color:#75af00">[HttpPost]</span>
+<span style="color:#00a8c8">public</span> <span style="color:#00a8c8">async</span> <span style="color:#111">Task</span><span style="color:#111">&lt;</span><span style="color:#111">IActionResult</span><span style="color:#111">&gt;</span> <span style="color:#111">CreatePostAsync</span><span style="color:#111">([</span><span style="color:#111">FromBody</span><span style="color:#111">]</span> <span style="color:#111">CreatePost</span> <span style="color:#111">request</span><span style="color:#111">)</span>
+<span style="color:#111">{</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#111">Ok</span><span style="color:#111">(</span><span style="color:#00a8c8">await</span> <span style="color:#111">_postService</span><span style="color:#111">.</span><span style="color:#111">CreateAsync</span><span style="color:#111">(</span><span style="color:#111">request</span><span style="color:#111">));</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>If you invoke the method with the wrong view model, you will receive a response like “400 Bad Request” with the errors summary.</p>
+<p>HTTP Request:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-http" data-lang="http"><span style="color:#75af00">POST</span> <span style="color:#111">/post</span> <span style="color:#00a8c8">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+<span style="color:#111">Host</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost:50555</span>
+<span style="color:#111">Content-Type</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json</span>
+<span style="color:#111">Cache-Control</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache</span>
+<span style="color:#111">Postman-Token</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">c5f7b803-dfe2-a315-eb8f-671b84cb3175</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-json" data-lang="json"><span style="color:#111">{</span>
+	<span style="color:#f92672">&#34;Title&#34;</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span><span style="color:#111">,</span>
+	<span style="color:#f92672">&#34;Content&#34;</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span><span style="color:#111">,</span>
+	<span style="color:#f92672">&#34;Excerpt&#34;</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;&#34;</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>JSON Response:</p>
+<div class="highlight"><div style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#272822;background-color:#fafafa;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-json" data-lang="json"><span style="color:#111">{</span>
+    <span style="color:#f92672">&#34;Title&#34;</span><span style="color:#111">:</span> <span style="color:#111">[</span>
+        <span style="color:#d88200">&#34;&#39;Title&#39; should not be empty.&#34;</span>
+    <span style="color:#111">],</span>
+    <span style="color:#f92672">&#34;Content&#34;</span><span style="color:#111">:</span> <span style="color:#111">[</span>
+        <span style="color:#d88200">&#34;&#39;Content&#39; should not be empty.&#34;</span>
+    <span style="color:#111">]</span>
+<span style="color:#111">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+    </article>
+
+</div>
+
+
+                <footer class="footer">    
+    <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></p>
+</footer>
+            </div>
+            <div class="right"></div>
+        </div>
+    </body>
+</html>

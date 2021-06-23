@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on nohat.dev</title>
+    <link>https://sergiobarriel.github.io/tags/</link>
+    <description>Recent content in Tags on nohat.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 May 2020 18:15:07 +0200</lastBuildDate>
+    
+	<atom:link href="https://sergiobarriel.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>automapper</title>
+      <link>https://sergiobarriel.github.io/tags/automapper/</link>
+      <pubDate>Sun, 10 May 2020 18:15:07 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/tags/automapper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>claims</title>
+      <link>https://sergiobarriel.github.io/tags/claims/</link>
+      <pubDate>Sun, 10 May 2020 18:15:07 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/tags/claims/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mvc</title>
+      <link>https://sergiobarriel.github.io/tags/mvc/</link>
+      <pubDate>Sun, 10 May 2020 18:15:07 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/tags/mvc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>netcore</title>
+      <link>https://sergiobarriel.github.io/tags/netcore/</link>
+      <pubDate>Sun, 10 May 2020 18:15:07 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/tags/netcore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>links</title>
+      <link>https://sergiobarriel.github.io/tags/links/</link>
+      <pubDate>Sat, 09 May 2020 18:01:33 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/tags/links/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>validation</title>
+      <link>https://sergiobarriel.github.io/tags/validation/</link>
+      <pubDate>Fri, 08 May 2020 20:11:04 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/tags/validation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

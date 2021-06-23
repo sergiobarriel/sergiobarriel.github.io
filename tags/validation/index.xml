@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>validation on nohat.dev</title>
+    <link>https://sergiobarriel.github.io/tags/validation/</link>
+    <description>Recent content in validation on nohat.dev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 May 2020 20:11:04 +0200</lastBuildDate>
+    
+	<atom:link href="https://sergiobarriel.github.io/tags/validation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to automatically validate a model with MVC filter and Fluent Validation package</title>
+      <link>https://sergiobarriel.github.io/posts/how-to-automatically-validate-a-model-with-mvc-filter-and-fluent-validation-package/</link>
+      <pubDate>Fri, 08 May 2020 20:11:04 +0200</pubDate>
+      
+      <guid>https://sergiobarriel.github.io/posts/how-to-automatically-validate-a-model-with-mvc-filter-and-fluent-validation-package/</guid>
+      <description>I have had the opportunity to see many MVC projects and in the vast majority of them I find structures where the view models are manually validated in all the methods of all the controllers.
+At best, the code relies on verifying ModelState property from Controller class, but in the worst case… better not to comment it.
+1 2 3 4 5 6 7 8 9 10  [Route(&amp;#34;&amp;#34;)] [HttpPost] public async Task&amp;lt;IActionResult&amp;gt; CreatePostAsync([FromBody] CreatePost request) { if (ModelState.</description>
+    </item>
+    
+  </channel>
+</rss>

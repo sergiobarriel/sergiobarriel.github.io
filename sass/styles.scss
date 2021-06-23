@@ -1,0 +1,10 @@
+@import 'reset';
+@import 'variables';
+@import 'global';
+
+/* atomic design pattern */
+@import 'atoms/all-atoms.scss';
+@import 'molecules/all-molecules.scss';
+@import 'organisms/all-organisms.scss';
+@import 'templates/all-templates.scss';
+@import 'pages/all-pages.scss';
