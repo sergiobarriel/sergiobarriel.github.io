@@ -1,1 +1,1 @@
-# work in progress
+# Go to [nohat.dev](https://nohat.dev/)
