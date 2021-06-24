@@ -1,1 +1,0 @@
-# Go to [nohat.dev](https://nohat.dev/)
