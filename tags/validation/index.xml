@@ -6,7 +6,7 @@
     <description>Recent content in validation on nohat.dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 May 2020 20:11:04 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 May 2018 20:11:04 +0200</lastBuildDate>
     
 	<atom:link href="https://sergiobarriel.github.io/tags/validation/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>How to automatically validate a model with MVC filter and Fluent Validation package</title>
       <link>https://sergiobarriel.github.io/posts/how-to-automatically-validate-a-model-with-mvc-filter-and-fluent-validation-package/</link>
-      <pubDate>Fri, 08 May 2020 20:11:04 +0200</pubDate>
+      <pubDate>Wed, 02 May 2018 20:11:04 +0200</pubDate>
       
       <guid>https://sergiobarriel.github.io/posts/how-to-automatically-validate-a-model-with-mvc-filter-and-fluent-validation-package/</guid>
       <description>I have had the opportunity to see many MVC projects and in the vast majority of them I find structures where the view models are manually validated in all the methods of all the controllers.
